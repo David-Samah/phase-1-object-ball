@@ -125,4 +125,13 @@ function gameObject(){
         }
     };
 }
+function numPointsScored(playerName){
+    let game=gameObject();
+    for(let team in game){
+        let players=game[team].players;
+        if (players[playersName]){
+            return players[playersName].points;
+        }
+    }
+}
 

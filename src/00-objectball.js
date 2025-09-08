@@ -15,7 +15,7 @@ function gameObject(){
             },
             'Reggie Evans':{
                 number:30,
-                shoe:14,,
+                shoe:14,
                 points:12,
                 rebounds:12,
                 assists:12,
@@ -35,7 +35,7 @@ function gameObject(){
                slamDunks:15
 
             },
-            'Mason Plumlee'{
+            'Mason Plumlee':{
                 number:1,
                 shoe:19,
                 points:26,
@@ -45,7 +45,7 @@ function gameObject(){
                 blocks:8,
                 slamDunks:5
             },
-            'Jason Terry'{
+            'Jason Terry':{
                 number:31,
                 shoe:15,
                 points:19,
@@ -129,9 +129,70 @@ function numPointsScored(playerName){
     let game=gameObject();
     for(let team in game){
         let players=game[team].players;
-        if (players[playersName]){
-            return players[playersName].points;
+        if (players[playerName]){
+            return players[playerName].points;
         }
     }
 }
 
+function shoeSize(playerName){
+    let game=gameObject();
+    for (let team in game){
+        let players=game[team].players;
+        if(players[playerName]){
+            return players[playerName].shoe;
+        }
+    }
+}
+
+function teamColors(teamName){
+    let game=gameObject();
+for (let team in game) {
+    if(game[team].teamName===teamName){
+        return game[team].colors;
+    }
+}
+}
+
+function teamNames(){
+    let game=gameObject();
+    return [game.home.teamName,game.away.teamName];
+}
+
+function playerNumbers(teamName){
+    let game=gameObject();
+    for(let team in game) {
+       if(game[team].teamName===teamName){
+        return Object.values(game[team].players) .map(player =>player.number)
+     }
+    }
+}
+
+function playerStats(playerName){
+    let game=gameObject();
+    for(let team in game){
+        let players=game[team].players;
+        if(players[playerName]){
+            return players[playerName]
+        }
+    }
+} 
+
+function bigShoeRebounds(){
+    let game=gameObject();
+    let biggestShoe= 0;
+    let rebounds = 0;
+
+    for(let team in game){
+
+        let  players=game[team].players;
+        for (let player in players){
+            let stats=players[player];
+            if(stats.shoe > biggestShoe){
+                biggestShoe = stats.Shoe;
+                rebounds=stats.rebounds;
+            }
+        }
+    }
+    return  rebounds
+}
